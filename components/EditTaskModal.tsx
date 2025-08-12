@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import React, { useEffect, useState } from 'react';
+import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { Modal, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { Task } from '../types/task';
 
@@ -66,7 +67,20 @@ export default function EditTaskModal({ visible, task, onClose, onSave, styles, 
             <Ionicons name="calendar" size={20} color="#007bff" />
             <Text style={styles.datePickerText}>Due: {currentDate.toLocaleDateString()} at {currentDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</Text>
           </TouchableOpacity>
-          {showDatePicker && <DateTimePicker value={currentDate} mode="datetime" display="default" onChange={onDateChange} />}
+          {showDatePicker && (
+              <ReactDatePicker
+              selected={currentDate}
+              onChange={(date: Date | null) => {
+                if (date) {
+                  setCurrentDate(date);
+                  setShowDatePicker(false);
+                }
+              }}
+              showTimeSelect
+              dateFormat="Pp"
+              inline
+            />
+          )}
           <View style={styles.modalButtons}>
             <TouchableOpacity style={styles.cancelButton} onPress={onClose}><Text style={styles.cancelButtonText}>Cancel</Text></TouchableOpacity>
             <TouchableOpacity style={[styles.saveButton, !editing?.title.trim() && styles.saveButtonDisabled]} onPress={save} disabled={!editing?.title.trim()}><Text style={styles.saveButtonText}>Save</Text></TouchableOpacity>
