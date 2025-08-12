@@ -97,7 +97,7 @@ export default function Index() {
       <View style={[styles.headerContainer, styles.mainHeader]}>
         <Text style={[styles.header, styles.headerTitle]}>Todum</Text>
       </View>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.headerContainer}>
           <Text style={styles.header}>My Tasks</Text>
           <TouchableOpacity style={styles.addButton} onPress={() => setShowAddModal(true)}>
@@ -113,7 +113,7 @@ export default function Index() {
         <EditTaskModal visible={!!editingTask} task={editingTask} onClose={() => setEditingTask(null)} onSave={(t) => { onEdit(t); setEditingTask(null); }} styles={styles} />
         <TaskDetailsModal visible={!!selectedTask} task={selectedTask} onClose={() => setSelectedTask(null)} onEdit={(t) => setEditingTask(t)} onDelete={(id) => onDelete(id)} styles={styles} />
         <DeleteConfirmationModal visible={!!taskToDelete} onCancel={cancelDelete} onConfirm={confirmDelete} styles={styles} />
-        </View>
+        </ScrollView>
     </View>
   );
 }
