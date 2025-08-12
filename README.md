@@ -1,50 +1,125 @@
-# Welcome to your Expo app 👋
+# Todum - Simple Task Manager App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Overview
 
-## Get started
+This is a React Native Task Manager app built with **Expo**.  
+It allows users to:
 
-1. Install dependencies
+- Add new tasks (with optional description and due date)
+- Mark tasks as complete
+- Delete tasks
+- View tasks grouped by **Overdue**, **Today**, **Tomorrow**, future dates, and **Completed**
 
-   ```bash
-   npm install
-   ```
+> The app also includes **task persistence** using AsyncStorage so tasks remain after closing the app.
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## Features
 
-In the output, you'll find options to open the app in a
+- **Add Task** — Enter a title (required), description (optional), and select a due date/time.
+- **Mark Complete** — Check off tasks, visually striking them through.
+- **Delete Task** — Remove tasks with a confirmation prompt.
+- **Task List** — See all tasks grouped by due date and status.
+- **Overdue Alerts** — The app alerts you if tasks are overdue (with a 5-minute grace period).
+- **Task Details View** — View full description and metadata in a modal.
+- **Persistent Storage** — Tasks are saved locally via AsyncStorage.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Project Structure
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+todum/
+├── app/
+│   └── index.tsx                     # Main application logic and state management
+│
+├── components/
+│   ├── TaskList.tsx                  # Displays grouped task sections
+│   ├── TaskItem.tsx                  # Renders individual task items
+│   ├── AddTaskModal.tsx              # Task creation form
+│   ├── EditTaskModal.tsx             # Task editing interface
+│   ├── TaskDetailsModal.tsx          # Detailed task view
+│   └── DeleteConfirmationModal.tsx   # Delete task confirmation
+│
+├── services/
+│   └── storage.ts                    # Handles AsyncStorage operations
+│
+├── utils/
+│   ├── date.ts                       # Date formatting helpers
+│   └── taskGrouping.ts               # Task categorization logic
+│
+├── types/
+│   └── task.ts                       # TypeScript type definitions
+│d
+├── styles/
+│   └── index.ts                      # Shared styling constants
+│
+├── assets/                           # Static assets
+│   ├── images/                       # App images and icons
+│   └── fonts/                        # Custom font files
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## Installation & Setup
 
-To learn more about developing your project with Expo, look at the following resources:
+### 1. Clone the Repository
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+git clone https://github.com/adelsrour/todum.git
+cd todum
+```
 
-## Join the community
+### 2. Install Dependencies
 
-Join our community of developers creating universal apps.
+```bash
+npm install
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### 3. Install Expo CLI (if not already installed)
+
+```bash
+npm install -g expo-cli
+```
+
+### 4. Run the App
+
+```bash
+npx expo start
+```
+
+- Press `i` to run on iOS Simulator (Mac only)
+- Press `a` to run on Android Emulator
+- Or scan the QR code with the Expo Go app on your device
+
+---
+
+## Third-Party Libraries Used
+
+- **[@expo/vector-icons](https://docs.expo.dev/guides/icons/)** — Icons for UI elements.
+- **[@react-native-async-storage/async-storage](https://github.com/react-native-async-storage/async-storage)** — Local storage for persisting tasks.
+- **[@react-native-community/datetimepicker](https://github.com/react-native-datetimepicker/datetimepicker)** — Native date & time picker.
+- **[react-native-elements](https://reactnativeelements.com/)** — UI components (checkbox).
+
+---
+
+## How It Works
+
+- Tasks are stored in local component state (`useState` in `app/index.tsx`).
+- State updates trigger AsyncStorage saves.
+- Components receive data and event handlers via props.
+- UI updates instantly in response to user actions.
+
+---
+
+## Notes
+
+- **Persistence:** Tasks are saved locally using AsyncStorage to ensure they remain after closing the app.
+- **Grouping Logic:** Tasks are grouped into sections for better readability.
+- **Overdue Handling:** Overdue tasks are visually distinct and alerted at load.
+
+---
+
+## License
+
+MIT
