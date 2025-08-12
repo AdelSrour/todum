@@ -34,9 +34,13 @@ export const groupTasksByDate = (tasks: Task[]) => {
   const overdueTasks = tasks.filter(task => isOverdue(task));
   const todaysTasks = tasks.filter(task => !task.completed && !isOverdue(task) && isSameDay(new Date(task.dueDate), today));
   const tomorrowsTasks = tasks.filter(task => !task.completed && !isOverdue(task) && isSameDay(new Date(task.dueDate), tomorrow));
-  const futureTasks = tasks.filter(task => !task.completed && !isOverdue(task) && new Date(task.dueDate) > tomorrow);
+  const futureTasks = tasks.filter(task => {
+    if (task.completed || isOverdue(task)) return false;
+    const taskDate = new Date(task.dueDate);
+    return taskDate >= new Date(tomorrow.getTime() + 86400000);
+  });
 
-  if (overdueTasks.length > 0) groups['⚠️ Overdue'] = sortByDate(overdueTasks);
+  if (overdueTasks.length > 0) groups['Overdue'] = sortByDate(overdueTasks);
   if (todaysTasks.length > 0) groups['Today'] = sortByDate(todaysTasks);
   if (tomorrowsTasks.length > 0) groups['Tomorrow'] = sortByDate(tomorrowsTasks);
 
@@ -49,7 +53,7 @@ export const groupTasksByDate = (tasks: Task[]) => {
   });
 
   if (completedTasks.length > 0) {
-    groups['✅ Completed'] = completedTasks.sort((a, b) => new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime());
+    groups['Completed'] = completedTasks.sort((a, b) => new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime());
   }
 
   return groups;

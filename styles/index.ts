@@ -12,7 +12,7 @@ export default StyleSheet.create({
   addButtonText: { color: '#fff', fontSize: 24, fontWeight: 'bold', lineHeight: 28 },
   tasksContainer: { flex: 1 },
   emptyState: { textAlign: 'center', color: '#bbb', marginTop: 20 },
-  sectionHeader: { fontSize: 18, fontWeight: 'bold', marginTop: 20, marginBottom: 10, color: '#eee' },
+  sectionHeader: { fontSize: 18, fontWeight: 'bold',  lineHeight: 20, color: '#eee' },
   overdueHeader: { color: '#ff6b6b', fontWeight: 'bold' },
   completedHeader: { color: '#888', fontWeight: 'bold' },
   taskItem: {
@@ -28,6 +28,8 @@ export default StyleSheet.create({
     shadowRadius: 2,
     elevation: 2,
   },
+  sectionHeaderContainer: { flexDirection: 'row',alignItems: 'center',paddingVertical: 8, marginBottom: 10, marginTop: 20},
+  sectionHeaderIcon: { marginRight: 8,},
   completedTask: { backgroundColor: '#2c2c2c' },
   overdueTask: { borderLeftWidth: 4, borderLeftColor: '#ff6b6b', backgroundColor: '#3a1f1f' },
   checkbox: { padding: 0, margin: 0, marginRight: 10, backgroundColor: 'transparent', borderWidth: 0 },

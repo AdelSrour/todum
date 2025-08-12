@@ -1,8 +1,10 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { Task } from '../types/task';
 import { groupTasksByDate } from '../utils/taskGrouping';
 import TaskItem from './TaskItem';
+
 
 /**
  * This component renders a list of tasks grouped by their due date.
@@ -37,13 +39,35 @@ export default function TaskList({ tasks, styles, onToggle, onEdit, onDelete, on
     <>
       {Object.entries(taskGroups).map(([date, tasksInGroup]) => (
         <View key={date}>
-          <Text style={[
-            styles.sectionHeader,
-            date === '⚠️ Overdue' && styles.overdueHeader,
-            date === '✅ Completed' && styles.completedHeader
-          ]}>
-            {date}
-          </Text>
+    
+
+          <View style={[styles.sectionHeaderContainer, 
+                      date === 'Overdue' && styles.overdueHeaderContainer,
+                      date === 'Completed' && styles.completedHeaderContainer]}>
+            {date === 'Overdue' && (
+              <MaterialIcons 
+                name="warning" 
+                size={20} 
+                color="#ff3b30" 
+                style={styles.sectionHeaderIcon} 
+              />
+            )}
+            {date === 'Completed' && (
+              <MaterialIcons 
+                name="check-circle" 
+                size={20} 
+                color="#34c759" 
+                style={styles.sectionHeaderIcon} 
+              />
+            )}
+            <Text style={[
+              styles.sectionHeader,
+              date === 'Overdue' && styles.overdueHeader,
+              date === 'Completed' && styles.completedHeader
+            ]}>
+              {date}
+            </Text>
+          </View>
           {tasksInGroup.map(task => (
             <TaskItem 
               key={task.id} 
