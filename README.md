@@ -18,12 +18,12 @@ It allows users to:
 
 <table>
   <tr>
-    <td><img src="docs/images/1.png" width="250" /></td>
-    <td><img src="docs/images/2.png" width="250" /></td>
+    <td><img src="docs/images/1.png" width="450" /></td>
+    <td><img src="docs/images/2.png" width="450" /></td>
   </tr>
   <tr>
-    <td><img src="docs/images/3.png" width="250" /></td>
-    <td><img src="docs/images/4.png" width="250" /></td>
+    <td><img src="docs/images/3.png" width="450" /></td>
+    <td><img src="docs/images/4.png" width="450" /></td>
   </tr>
 </table>
 
