@@ -1,10 +1,10 @@
 # Todum - Simple Task Manager App
 
-![Overview](doc/images/1.png)
-![Edit task](doc/images/2.png)
-![Delete task](doc/images/3.png)
-![Add task](doc/images/4.png)
-![Final view](doc/images/5.png)
+![Overview](docs/images/1.png)
+![Edit task](docs/images/2.png)
+![Delete task](docs/images/3.png)
+![Add task](docs/images/4.png)
+![Final view](docs/images/5.png)
 
 ## Overview
 
