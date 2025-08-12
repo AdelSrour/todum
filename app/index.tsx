@@ -93,22 +93,27 @@ export default function Index() {
 
   // Main application interface with task list and modals
   return (
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.header}>My Tasks</Text>
-        <TouchableOpacity style={styles.addButton} onPress={() => setShowAddModal(true)}>
-          <Text style={styles.addButtonText}>+</Text>
-        </TouchableOpacity>
+    <View style={styles.bodyContainer}>
+      <View style={[styles.headerContainer, styles.mainHeader]}>
+        <Text style={[styles.header, styles.headerTitle]}>Todum</Text>
       </View>
+      <View style={styles.container}>
+        <View style={styles.headerContainer}>
+          <Text style={styles.header}>My Tasks</Text>
+          <TouchableOpacity style={styles.addButton} onPress={() => setShowAddModal(true)}>
+            <Text style={styles.addButtonText}>+</Text>
+          </TouchableOpacity>
+        </View>
 
-      <ScrollView style={styles.tasksContainer}>
-        <TaskList tasks={tasks} styles={styles} onToggle={toggleTask} onEdit={(t) => setEditingTask(t)} onDelete={onDelete} onPress={(t) => setSelectedTask(t)} />
-      </ScrollView>
+        <ScrollView style={styles.tasksContainer}>
+          <TaskList tasks={tasks} styles={styles} onToggle={toggleTask} onEdit={(t) => setEditingTask(t)} onDelete={onDelete} onPress={(t) => setSelectedTask(t)} />
+        </ScrollView>
 
-      <AddTaskModal visible={showAddModal} onClose={() => setShowAddModal(false)} onAdd={onAdd} styles={styles} />
-      <EditTaskModal visible={!!editingTask} task={editingTask} onClose={() => setEditingTask(null)} onSave={(t) => { onEdit(t); setEditingTask(null); }} styles={styles} />
-      <TaskDetailsModal visible={!!selectedTask} task={selectedTask} onClose={() => setSelectedTask(null)} onEdit={(t) => setEditingTask(t)} onDelete={(id) => onDelete(id)} styles={styles} />
-      <DeleteConfirmationModal visible={!!taskToDelete} onCancel={cancelDelete} onConfirm={confirmDelete} styles={styles} />
+        <AddTaskModal visible={showAddModal} onClose={() => setShowAddModal(false)} onAdd={onAdd} styles={styles} />
+        <EditTaskModal visible={!!editingTask} task={editingTask} onClose={() => setEditingTask(null)} onSave={(t) => { onEdit(t); setEditingTask(null); }} styles={styles} />
+        <TaskDetailsModal visible={!!selectedTask} task={selectedTask} onClose={() => setSelectedTask(null)} onEdit={(t) => setEditingTask(t)} onDelete={(id) => onDelete(id)} styles={styles} />
+        <DeleteConfirmationModal visible={!!taskToDelete} onCancel={cancelDelete} onConfirm={confirmDelete} styles={styles} />
+        </View>
     </View>
   );
 }
