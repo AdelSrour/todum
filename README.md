@@ -1,16 +1,5 @@
 # Todum - Simple Task Manager App
 
-<table>
-  <tr>
-    <td><img src="docs/images/1.png" width="250" /></td>
-    <td><img src="docs/images/2.png" width="250" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/images/3.png" width="250" /></td>
-    <td><img src="docs/images/4.png" width="250" /></td>
-  </tr>
-</table>
-
 ## Overview
 
 This is a React Native Task Manager app built with **Expo**.  
@@ -22,6 +11,21 @@ It allows users to:
 - View tasks grouped by **Overdue**, **Today**, **Tomorrow**, future dates, and **Completed**
 
 > The app also includes **task persistence** using AsyncStorage so tasks remain after closing the app.
+
+---
+
+## Gallery
+
+<table>
+  <tr>
+    <td><img src="docs/images/1.png" width="250" /></td>
+    <td><img src="docs/images/2.png" width="250" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/3.png" width="250" /></td>
+    <td><img src="docs/images/4.png" width="250" /></td>
+  </tr>
+</table>
 
 ---
 
