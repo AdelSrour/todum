@@ -1,10 +1,15 @@
 # Todum - Simple Task Manager App
 
-![Overview](docs/images/1.png)
-![Edit task](docs/images/2.png)
-![Delete task](docs/images/3.png)
-![Add task](docs/images/4.png)
-![Final view](docs/images/5.png)
+<table>
+  <tr>
+    <td><img src="docs/images/1.png" width="250" /></td>
+    <td><img src="docs/images/2.png" width="250" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/3.png" width="250" /></td>
+    <td><img src="docs/images/4.png" width="250" /></td>
+  </tr>
+</table>
 
 ## Overview
 
