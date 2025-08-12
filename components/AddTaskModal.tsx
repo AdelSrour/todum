@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import React, { useEffect, useState } from 'react';
+import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { Modal, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { Task } from '../types/task';
 
@@ -67,11 +68,24 @@ export default function AddTaskModal({ visible, onClose, onAdd, initialDate, sty
           <Text style={styles.modalTitle}>Add New Task</Text>
           <TextInput style={styles.editInput} placeholder="Task title *" value={title} onChangeText={setTitle} autoFocus />
           <TextInput style={[styles.editInput, styles.editDescriptionInput]} placeholder="Task description (optional)" value={description} onChangeText={setDescription} multiline />
-          <TouchableOpacity style={styles.datePickerButton} onPress={() => setShowDatePicker(true)}>
+          <TouchableOpacity style={styles.datePickerButton} onPress={() => setShowDatePicker(!showDatePicker)}>
             <Ionicons name="calendar" size={20} color="#007bff" />
             <Text style={styles.datePickerText}>Due: {currentDate.toLocaleDateString()} at {currentDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</Text>
-          </TouchableOpacity>
-          {showDatePicker && <DateTimePicker value={currentDate} mode="datetime" display="default" onChange={onDateChange} />}
+            </TouchableOpacity>
+            {showDatePicker && (
+              <ReactDatePicker
+              selected={currentDate}
+              onChange={(date: Date | null) => {
+                if (date) {
+                  setCurrentDate(date);
+                  setShowDatePicker(false);
+                }
+              }}
+              showTimeSelect
+              dateFormat="Pp"
+              inline
+            />
+          )}
           <View style={styles.modalButtons}>
             <TouchableOpacity style={styles.cancelButton} onPress={onClose}><Text style={styles.cancelButtonText}>Cancel</Text></TouchableOpacity>
             <TouchableOpacity style={[styles.saveButton, !title.trim() && styles.saveButtonDisabled]} onPress={add} disabled={!title.trim()}><Text style={styles.saveButtonText}>Add</Text></TouchableOpacity>
